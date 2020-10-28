@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/search_text"
+            android:lines="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:nestedScrollingEnabled="false" />
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_search_black_24dp"
+            android:text="Search"
+            android:textSize="10sp"
+            style="@style/Widget.MaterialComponents.Button.Icon" />
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="0dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/empty_view"
+            android:layout_centerInParent="true"
+            android:textAppearance="?android:textAppearanceMedium"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/start_view"
+            android:layout_centerInParent="true"
+            android:text="Enter Book Name"
+            android:textAppearance="?android:textAppearanceMedium"
+            />
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progresss"
+            android:layout_centerInParent="true"
+            style="@style/Widget.AppCompat.ProgressBar"/>
+    </RelativeLayout>
+</LinearLayout>

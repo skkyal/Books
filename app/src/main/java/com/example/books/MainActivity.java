@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         cm = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-
+        start.setVisibility(View.GONE);
         //when search button clicked
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             Toast.makeText(getApplicationContext(),"Enter a Book Name",Toast.LENGTH_SHORT).show();
             return;
         }
-        start.setVisibility(View.GONE);
+        //start.setVisibility(View.GONE);
         if(loaderManager!=null)
             loaderManager.destroyLoader(1);
         loaderManager.initLoader(1, null, MainActivity.this);
@@ -169,7 +169,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if(!bookAdapter.isEmpty())
+        if(!bookAdapter.isEmpty() ||(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)) {
             bookAdapter.notifyDataSetChanged();
+            Log.i("orientation changed", "changed");
+        }
+
     }
 }

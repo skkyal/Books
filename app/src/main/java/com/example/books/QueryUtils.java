@@ -115,16 +115,25 @@ public class QueryUtils {
                 //double rating = 0;// volumeInfo.getDouble("averageRating");
 
                 //authors
-                JSONArray authors = volumeInfo.getJSONArray("authors");
+                JSONArray authors;
                 String author="";
-                for(int j=0;j<authors.length();j++){
-                    String temp = authors.getString(j).toString();
 
-                    if(j!=authors.length()-1)
-                     temp = temp + ", " ;
+                try {
+                    authors = volumeInfo.getJSONArray("authors");
+                    for(int j=0;j<authors.length();j++){
+                        String temp = authors.getString(j).toString();
 
-                    author = author + temp;
+                        if(j!=authors.length()-1)
+                            temp = temp + ", " ;
+
+                        author = author + temp;
+                    }
+                }catch(Exception e){
+                    Log.e("JSON error","Authors not found");
+                    author="Unknown";
                 }
+
+
                 //url
                 String url = volumeInfo.getString("infoLink");
 

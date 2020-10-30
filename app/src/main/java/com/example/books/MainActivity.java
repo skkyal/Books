@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         cm = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-        start.setVisibility(View.GONE);
         //when search button clicked
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         });
 
         //listView item click listener
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Book current = bookAdapter.getItem(i);
@@ -104,7 +103,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, bookInfoUrl);
                 startActivity(websiteIntent);
             }
-        });
+            //Handled through CardView
+        });*/
     }
     public void search() {
         //Hide the keyboard on button Click
@@ -123,6 +123,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         //Make ProgressBar Invisible
         progressBar.setVisibility(View.VISIBLE);
         empty.setText("");
+
+        start.setVisibility(View.GONE);
     }
 
     @Override

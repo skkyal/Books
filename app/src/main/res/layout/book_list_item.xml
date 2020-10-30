@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
     app:cardUseCompatPadding="true"
+    android:clickable="true"
+    app:strokeWidth="1dp"
     app:cardMaxElevation="5dp"
     app:cardElevation="2dp"
     >
@@ -14,29 +16,41 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/book_title"
-        android:text="Title"
-        android:layout_marginRight="5dp"
-        android:textSize="16sp"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/book_author"
-        android:text="Author"
-        android:layout_below="@+id/book_title"/>
-   <!-- <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/book_rating"
-        android:text="4.5"
-        android:layout_alignParentRight="true"
-        android:layout_alignRight="@+id/book_title"
-        android:layout_alignParentTop="true"
-        /> -->
+        <ImageView
+            android:id="@+id/book_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/book"
+            android:layout_marginRight="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/book_title"
+            android:text="Title"
+            android:layout_marginRight="5dp"
+            android:textSize="18sp"
+            android:maxLines="2"
+            android:textColor="#424242"
+            android:layout_toRightOf="@+id/book_image"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/book_author"
+            android:text="Author"
+            android:layout_below="@+id/book_title"
+            android:maxLines="1"
+            android:textStyle="italic"
+            android:layout_toRightOf="@+id/book_image"/>
+       <!-- <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/book_rating"
+            android:text="4.5"
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/book_title"
+            android:layout_alignParentTop="true"
+            /> -->
 
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

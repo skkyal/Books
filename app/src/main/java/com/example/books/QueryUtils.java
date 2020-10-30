@@ -137,7 +137,11 @@ public class QueryUtils {
                 //url
                 String url = volumeInfo.getString("infoLink");
 
-                books.add(new Book(title,author,url));
+                //image url
+                JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
+                String imageUrl = imageLinks.getString("smallThumbnail");
+
+                books.add(new Book(title,author,url,imageUrl));
             }
 
         } catch (Exception e) {

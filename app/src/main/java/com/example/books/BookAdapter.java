@@ -9,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.card.MaterialCardView;
+import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -37,6 +39,12 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
         TextView author = (TextView)listItemView.findViewById(R.id.book_author);
         author.setText(currentBook.getBookAuthor());
+
+        ImageView image = (ImageView)listItemView.findViewById(R.id.book_image);
+        String imageUrl = currentBook.getBookImage().replace("http","https");
+        Picasso.with(context).load(imageUrl)
+                .error(R.drawable.book)
+                .into(image);
 
         MaterialCardView card = (MaterialCardView)listItemView.findViewById(R.id.card);
         card.setOnClickListener(new View.OnClickListener() {

@@ -21,6 +21,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.widget.ProgressBar;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public String BOOKS_API= "https://www.googleapis.com/books/v1/volumes?q=";
 
     private EditText searchName;
-    private Button searchButton;
+    private ImageButton searchButton;
     private ListView listView;
     private ArrayList<Book>bookList;
     private BookAdapter bookAdapter;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         searchName = (EditText)findViewById(R.id.search_text);
-        searchButton = (Button) findViewById(R.id.search_button);
+        searchButton = (ImageButton) findViewById(R.id.search_button);
         listView = (ListView) findViewById(R.id.list);
         start = (TextView) findViewById(R.id.start_view);
         bookAdapter = new BookAdapter(this,new ArrayList<Book>());
@@ -131,7 +132,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public Loader<List<Book>> onCreateLoader(int i, Bundle bundle) {
         String s = searchName.getText().toString().trim();
         Log.i("message from creater","created");
-        return new BookLoader(this,BOOKS_API+s);
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("https")
+                .authority("www.googleapis.com")
+                .appendPath("books")
+                .appendPath("v1")
+                .appendPath("volumes")
+                .appendQueryParameter("q",s)
+                .appendQueryParameter("maxResults", "40");
+        String myUrl = builder.build().toString();
+        return new BookLoader(this,myUrl);
 
     }
 
